@@ -37,6 +37,11 @@ if ($result->num_rows > 0) {
             background-color: #f2f2f2;
         }
     </style>
+    <script type="text/javascript">
+    setInterval(function () { 
+        location.reload();
+    }, 3 * 1000);
+</script>
 </head>
 <body>
     <h2>DHT Sensor Readings</h2>

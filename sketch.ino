@@ -4,7 +4,7 @@
 
 const char *ssid = "";
 const char *password = "";
-String URL = "http://IP/midterms-iot/query/store.php";
+String URL = "http://192.168.1.55/midterms-iot/query/store.php";
 
 #define DHTPIN 5
 #define DHTTYPE DHT11
@@ -28,7 +28,6 @@ void connectWiFi()
 
 void setup()
 {
-    // put your setup code here, to run once:
     Serial.begin(115200);
     dht.begin();
     delay(2000);
@@ -38,7 +37,6 @@ void setup()
 
 void loop()
 {
-    // put your main code here, to run repeatedly:
     if (WiFi.status() != WL_CONNECTED)
     {
         connectWiFi();
@@ -60,7 +58,6 @@ void loop()
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
     String postData = "temperature=" + String(temperature, 1) + "&humidity=" + String(humidity, 1);
-
     int httpCode = http.POST(postData);
     String payload = http.getString();
 
@@ -77,5 +74,5 @@ void loop()
     Serial.println(humidity);
     Serial.println("--------------------------------------");
 
-    delay(4000);
+    delay(2000);
 }
